@@ -23,6 +23,10 @@ class TodoAPI < Grape::API
       TodoRepo.todos
     end
 
+    delete do
+      TodoRepo.delete_all
+    end
+
     route_param :id do
       get do
         todo = TodoRepo.find(params[:id])

@@ -31,5 +31,9 @@ class TodoRepo
 
       todos.delete(todo)
     end
+
+    def delete_all
+      @todos = []
+    end
   end
 end
