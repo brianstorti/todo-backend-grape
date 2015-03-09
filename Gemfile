@@ -1,3 +1,8 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "grape"
+gem 'grape'
+
+group :test do
+  gem 'byebug'
+  gem 'rack-test'
+end

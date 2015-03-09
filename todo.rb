@@ -29,7 +29,7 @@ class TodoAPI < Grape::API
 
     get do
       todo = TodoRepo.find(params[:id])
-      error!('foo', 404) unless todo
+      error!("Record not found with id '#{params[:id]}'", 404) unless todo
       todo
     end
 
