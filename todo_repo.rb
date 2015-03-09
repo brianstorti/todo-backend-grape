@@ -27,6 +27,7 @@ class TodoRepo
       raise RecordNotFound.new unless todo
 
       todo.merge!(params)
+      todo
     end
 
     def delete(id)

@@ -28,22 +28,16 @@ class TodoAPI < Grape::API
       error!('foo', 404) unless todo
       todo
     end
-  end
 
-  params do
-    requires :id
-    optional :title, type: String
-    optional :status, type: String
-  end
-  patch do
-    begin
-      TodoRepo.update(params)
-    rescue RecordNotFound
-      error!("Record not found with id '#{params[:id]}'", 404)
+    patch do
+      begin
+        require 'byebug'; byebug
+        TodoRepo.update(params)
+      rescue RecordNotFound
+        error!("Record not found with id '#{params[:id]}'", 404)
+      end
     end
-  end
 
-  route_param :id do
     delete do
       begin
         TodoRepo.delete(params[:id])
