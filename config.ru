@@ -1,3 +1,3 @@
-require_relative 'todo'
+require_relative 'lib/todo'
 
  run TodoAPI

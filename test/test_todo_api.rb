@@ -2,7 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'rack/test'
 require 'minitest/autorun'
-require_relative '../todo.rb'
+require_relative '../lib/todo.rb'
 
 class TodoAPITest < MiniTest::Test
   include Rack::Test::Methods
