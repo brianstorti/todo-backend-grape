@@ -31,7 +31,6 @@ class TodoAPI < Grape::API
 
     patch do
       begin
-        require 'byebug'; byebug
         TodoRepo.update(params)
       rescue RecordNotFound
         error!("Record not found with id '#{params[:id]}'", 404)
