@@ -33,7 +33,7 @@ class TodoAPI < Grape::API
 
     params do
       requires :id
-      optional :name, type: String
+      optional :title, type: String
       optional :status, type: String
     end
     patch do
@@ -56,8 +56,7 @@ class TodoAPI < Grape::API
     end
 
     params do
-      requires :name, type: String
-      requires :status, type: String
+      requires :title, type: String
     end
     post do
       TodoRepo.add(params)
