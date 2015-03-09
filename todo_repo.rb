@@ -7,10 +7,11 @@ class TodoRepo
       @todos
     end
 
-    def add(params)
+    def add(params, host)
       todo = Hashie.symbolize_keys!(params.to_hash)
-      todo[:id] = SecureRandom.uuid
-      todo[:url] = url_for(todo)
+      id = SecureRandom.uuid
+      todo[:id] = id
+      todo[:url] = "#{host}/#{id}"
 
       todos << todo
       todo
@@ -37,11 +38,6 @@ class TodoRepo
 
     def delete_all
       @todos = []
-    end
-
-    private
-    def url_for(todo)
-      "/todos/#{todo[:id]}"
     end
   end
 end

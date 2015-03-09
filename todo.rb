@@ -5,6 +5,12 @@ require_relative 'todo_repo'
 class TodoAPI < Grape::API
   format :json
 
+  helpers do
+    def host
+      env["api.endpoint"].env["HTTP_HOST"]
+    end
+  end
+
   before do
     header 'Access-Control-Allow-Origin', '*'
     header 'access-control-allow-headers', 'Content-Type'
@@ -58,6 +64,6 @@ class TodoAPI < Grape::API
   end
   post do
     params.merge!(completed: false)
-    TodoRepo.add(params)
+    TodoRepo.add(params, host)
   end
 end
