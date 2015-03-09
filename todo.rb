@@ -7,6 +7,7 @@ class TodoAPI < Grape::API
 
   before do
     header 'Access-Control-Allow-Origin', '*'
+    header 'access-control-allow-headers', 'Content-Type'
   end
 
   get '/' do
