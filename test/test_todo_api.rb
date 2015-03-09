@@ -83,4 +83,15 @@ class TodoAPITest < MiniTest::Test
     todos = JSON.parse(last_response.body)
     assert todos.empty?
   end
+
+  def test_not_found_for_inexistent_id
+    get '/foo'
+    assert last_response.not_found?
+
+    patch '/foo'
+    assert last_response.not_found?
+
+    delete '/foo'
+    assert last_response.not_found?
+  end
 end
