@@ -11,7 +11,7 @@ class TodoAPI < Grape::API
   end
 
   options do
-    header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,DELETE,OPTIONS,PUT'
+    header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,PATCH,DELETE,OPTIONS,PUT'
   end
 
   get do
@@ -24,7 +24,7 @@ class TodoAPI < Grape::API
 
   route_param :id do
     options do
-      header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,DELETE,OPTIONS,PUT'
+      header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,PATCH,DELETE,OPTIONS,PUT'
     end
 
     get do
