@@ -13,6 +13,7 @@ class TodoRepo
       todo[:url] = url_for(todo)
 
       todos << todo
+      todo
     end
 
     def find(id)
