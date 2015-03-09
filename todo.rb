@@ -10,10 +10,6 @@ class TodoAPI < Grape::API
     header 'access-control-allow-headers', 'Content-Type'
   end
 
-  get '/' do
-    redirect '/todos'
-  end
-
   options do
     header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,DELETE,OPTIONS,PUT'
   end
