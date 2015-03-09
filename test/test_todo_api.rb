@@ -51,6 +51,7 @@ class TodoAPITest < MiniTest::Test
     todo_url = JSON.parse(last_response.body)['url']
 
     delete todo_url
+    assert last_response.ok?
 
     get todo_url
     assert last_response.not_found?
@@ -63,6 +64,7 @@ class TodoAPITest < MiniTest::Test
     todo_url = JSON.parse(last_response.body)['url']
 
     patch todo_url, {title: 'updated'}
+    assert last_response.ok?
 
     get todo_url
     retrieved_todo = JSON.parse(last_response.body)
@@ -78,13 +80,14 @@ class TodoAPITest < MiniTest::Test
     assert_equal 2, todos.size
 
     delete '/'
+    assert last_response.ok?
 
     get '/'
     todos = JSON.parse(last_response.body)
     assert todos.empty?
   end
 
-  def test_not_found_for_inexistent_id
+  def test_returns_not_found_status_for_inexistent_id
     get '/foo'
     assert last_response.not_found?
 
