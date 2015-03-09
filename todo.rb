@@ -48,14 +48,13 @@ class TodoAPI < Grape::API
       end
     end
 
-    params do
-      requires :id
-    end
-    delete do
-      begin
-        TodoRepo.delete(params[:id])
-      rescue RecordNotFound
-        error!("Record not found with id '#{params[:id]}'", 404)
+    route_param :id do
+      delete do
+        begin
+          TodoRepo.delete(params[:id])
+        rescue RecordNotFound
+          error!("Record not found with id '#{params[:id]}'", 404)
+        end
       end
     end
 
