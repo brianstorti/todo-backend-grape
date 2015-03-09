@@ -62,6 +62,7 @@ class TodoAPI < Grape::API
       requires :title, type: String
     end
     post do
+      params.merge!(completed: false)
       TodoRepo.add(params)
     end
   end
