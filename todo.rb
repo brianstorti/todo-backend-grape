@@ -23,6 +23,10 @@ class TodoAPI < Grape::API
   end
 
   route_param :id do
+    options do
+      header 'Access-Control-Allow-Methods', 'GET,HEAD,POST,DELETE,OPTIONS,PUT'
+    end
+
     get do
       todo = TodoRepo.find(params[:id])
       error!('foo', 404) unless todo
