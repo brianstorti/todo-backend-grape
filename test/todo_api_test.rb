@@ -1,5 +1,3 @@
-ENV['RACK_ENV'] = 'test'
-
 require 'rack/test'
 require 'minitest/autorun'
 require_relative '../lib/todo.rb'
