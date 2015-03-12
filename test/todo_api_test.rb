@@ -25,7 +25,7 @@ class TodoAPITest < MiniTest::Test
 
     created_todo = JSON.parse(last_response.body)
     assert_equal 'foo', created_todo['title']
-    assert_equal false, created_todo['completed']
+    assert !created_todo['completed']
     assert_match (/http:\/\/example.org\/\w/), created_todo['url']
   end
 
